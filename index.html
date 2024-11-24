@@ -27,7 +27,7 @@
 
         /* Header Styles */
         header {
-            background: #333;
+            background: linear-gradient(45deg, #333, #0066cc);
             color: #fff;
             text-align: center;
             padding: 50px 20px;
@@ -42,69 +42,78 @@
             margin-top: 10px;
         }
 
-        /* Button Styles */
-        button {
-            background-color: #0066cc;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        /* Profile Picture Flip Styles */
+        .profile-container {
+            perspective: 1000px;
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
         }
-        button:hover {
-            background-color: #005bb5;
-        }
-
-        /* About Modal Styles */
-        .about-modal {
-            display: none;
-            position: fixed;
-            z-index: 10;
-            left: 0;
-            top: 0;
+        .profile-card {
+            position: relative;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+            transform-style: preserve-3d;
+            transform: rotateY(0);
+            transition: transform 0.6s ease-in-out;
         }
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            text-align: center;
-            position: relative;
+        .profile-container:hover .profile-card {
+            transform: rotateY(180deg);
         }
-        .modal-content img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            margin-bottom: 15px;
-        }
-        .modal-content h2 {
-            font-size: 2em;
-            color: #333;
-        }
-        .modal-content p {
-            font-size: 1.1em;
-            color: #666;
-            margin: 15px 0;
-        }
-        .close-btn {
+        .profile-card img, .profile-card .profile-back {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
         }
-        .close-btn:hover {
-            color: #f00;
+        .profile-card img {
+            border: 5px solid #fff;
+        }
+        .profile-card .profile-back {
+            background: #0066cc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg);
+        }
+
+        /* About Section Styles */
+        .about-content {
+            text-align: center;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .typewriter {
+            font-size: 1.2em;
+            color: #666;
+            margin: 0 auto;
+            max-width: 800px;
+            border-right: 2px solid #333;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(30, end), blink 0.75s step-end infinite alternate;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink {
+            from {
+                border-color: transparent;
+            }
+            to {
+                border-color: #333;
+            }
         }
 
         /* Projects Section Styles */
@@ -136,20 +145,6 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* Contact Section Styles */
-        .contact-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .contact-section h2 {
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .contact-section button {
-            margin: 10px;
-        }
-
         /* Footer Styles */
         footer {
             background: #333;
@@ -168,20 +163,23 @@
         <p>📍 Tech Enthusiast | Adventurer | B.Tech Student</p>
     </header>
 
-    <!-- About Section with Button -->
-    <section class="about-content">
-        <button onclick="openModal()">About Me</button>
-    </section>
-
-    <!-- About Modal -->
-    <div class="about-modal" id="aboutModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+    <!-- Profile Picture Flip -->
+    <div class="profile-container">
+        <div class="profile-card">
             <img src="profile pic.jpeg" alt="Aarjav's Profile Picture">
-            <h2>About Me</h2>
-            <p>Hi, I'm Aarjav, a passionate tech enthusiast and adventurer. Currently pursuing my B.Tech in Computer Science, I enjoy exploring AI, blockchain, and web development. I started my TBI GEU journey as a Full-Stack Developer intern and am also proud to be an open-source contributor at GSSOC (GirlScript Summer of Code).</p>
+            <div class="profile-back">
+                <p>Full Stack Developer</p>
+            </div>
         </div>
     </div>
+
+    <!-- About Section -->
+    <section class="about-content">
+        <h2>About Me</h2>
+        <p class="typewriter">
+            Hi, I'm Aarjav, a passionate tech enthusiast and adventurer. I started my TBI GEU journey as a Full Stack Developer intern, contributed to open source during GSSOC, and love exploring AI, blockchain, and web development!
+        </p>
+    </section>
 
     <!-- Projects Section -->
     <section class="projects-section">
@@ -193,37 +191,10 @@
         </ul>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <h2>Contact</h2>
-        <button onclick="location.href='mailto:aarjavjain2210@gmail.com'">Email Me</button>
-        <button onclick="location.href='https://github.com/Aarjav-Jain-2210'" target="_blank">GitHub</button>
-        <button onclick="location.href='https://www.linkedin.com/in/aarjav-jain-'" target="_blank">LinkedIn</button>
-    </section>
-
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Aarjav | Built with 💻 and ☕</p>
     </footer>
-
-    <script>
-        // Modal Control
-        function openModal() {
-            document.getElementById('aboutModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('aboutModal').style.display = 'none';
-        }
-
-        // Close Modal on Outside Click
-        window.onclick = function(event) {
-            const modal = document.getElementById('aboutModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-    </script>
 
 </body>
 </html>
