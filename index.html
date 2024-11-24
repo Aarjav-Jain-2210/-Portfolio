@@ -42,36 +42,69 @@
             margin-top: 10px;
         }
 
-        /* About Section Styles */
-        section {
-            padding: 50px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* Button Styles */
+        button {
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .about-content {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .about-content h2 {
-            font-size: 2.5em;
-            color: #333;
-        }
-        .about-content p {
-            font-size: 1.1em;
-            margin-top: 10px;
-            color: #666;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 20px auto;
+        button:hover {
+            background-color: #005bb5;
         }
 
-        /* Profile Picture Styles */
-        .profile-pic {
+        /* About Modal Styles */
+        .about-modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-content img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             border: 5px solid #fff;
-            margin: 20px 0;
+            margin-bottom: 15px;
+        }
+        .modal-content h2 {
+            font-size: 2em;
+            color: #333;
+        }
+        .modal-content p {
+            font-size: 1.1em;
+            color: #666;
+            margin: 15px 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #f00;
         }
 
         /* Projects Section Styles */
@@ -113,17 +146,8 @@
             color: #333;
             margin-bottom: 20px;
         }
-        .contact-section p {
-            font-size: 1.2em;
-            color: #555;
-            margin: 10px 0;
-        }
-
-        .contact-section img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            vertical-align: middle;
+        .contact-section button {
+            margin: 10px;
         }
 
         /* Footer Styles */
@@ -133,26 +157,6 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 50px;
-        }
-
-        /* Media Query for Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em;
-            }
-            header p {
-                font-size: 1.1em;
-            }
-            section {
-                padding: 30px 15px;
-            }
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            .projects-section h2, .contact-section h2 {
-                font-size: 2em;
-            }
         }
     </style>
 </head>
@@ -164,35 +168,62 @@
         <p>📍 Tech Enthusiast | Adventurer | B.Tech Student</p>
     </header>
 
-    <!-- About Section -->
+    <!-- About Section with Button -->
     <section class="about-content">
-        <h2>About Me</h2>
-        <img src="profile pic.jpeg" alt="Aarjav's Profile Picture" class="profile-pic">
-        <p>Hi, I'm Aarjav, a passionate tech enthusiast and adventurer. Currently pursuing my B.Tech in Computer Science, I enjoy exploring AI, blockchain, and web development. I believe in pushing boundaries and discovering new horizons, both in tech and life.</p>
+        <button onclick="openModal()">About Me</button>
     </section>
+
+    <!-- About Modal -->
+    <div class="about-modal" id="aboutModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img src="profile-pic.jpeg" alt="Aarjav's Profile Picture">
+            <h2>About Me</h2>
+            <p>Hi, I'm Aarjav, a passionate tech enthusiast and adventurer. Currently pursuing my B.Tech in Computer Science, I enjoy exploring AI, blockchain, and web development. I started my TBI GEU journey as a Full-Stack Developer intern and am also proud to be an open-source contributor at GSSOC (GirlScript Summer of Code).</p>
+        </div>
+    </div>
 
     <!-- Projects Section -->
     <section class="projects-section">
         <h2>Projects</h2>
         <ul>
+            <li><strong>Instagram Clone:</strong> Built a feature-rich social media clone during my internship at TBI GEU.</li>
+            <li><strong>GSSOC Contributions:</strong> Made impactful open-source contributions during GirlScript Summer of Code.</li>
             <li><strong>AI for Everyone:</strong> Explored foundational AI concepts through Andrew Ng's course.</li>
-            <li><strong>Autonomous Cars:</strong> Researching vulnerabilities in sensors on cloud computing.</li>
-            <li><strong>Cryptocurrency:</strong> Currently brainstorming a mini-project on creating my own cryptocurrency.</li>
         </ul>
     </section>
 
     <!-- Contact Section -->
     <section class="contact-section">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:aarjavjain2210@gmail.com"><img src="mail.png" alt="Email Icon"> aarjavjain2210@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/Aarjav-Jain-2210" target="_blank"><img src="github-mark.png" alt="GitHub Icon"> https://github.com/Aarjav-Jain-2210</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/aarjav-jain-" target="_blank"><img src="linkedin.png" alt="LinkedIn Icon"> https://www.linkedin.com/in/aarjav-jain-</a></p>
+        <button onclick="location.href='mailto:aarjavjain2210@gmail.com'">Email Me</button>
+        <button onclick="location.href='https://github.com/Aarjav-Jain-2210'" target="_blank">GitHub</button>
+        <button onclick="location.href='https://www.linkedin.com/in/aarjav-jain-'" target="_blank">LinkedIn</button>
     </section>
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Aarjav | Built with 💻 and ☕</p>
     </footer>
+
+    <script>
+        // Modal Control
+        function openModal() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+
+        // Close Modal on Outside Click
+        window.onclick = function(event) {
+            const modal = document.getElementById('aboutModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
 
 </body>
 </html>
