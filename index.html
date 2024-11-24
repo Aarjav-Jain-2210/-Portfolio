@@ -7,7 +7,276 @@
     <style>
         /* Global Styles */
         body {
+            font-family: 'Arial', s<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarjav's Portfolio</title>
+    <style>
+        /* Global Styles */
+        body {
             font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(45deg, #333, #0066cc);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Profile and About Section */
+        .profile-about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+        }
+        .profile-about::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.png') no-repeat center center/cover;
+            opacity: 0.2; /* Semi-transparent background */
+            z-index: -1;
+        }
+        .profile-container {
+            perspective: 1000px;
+            width: 250px;
+            height: 250px;
+        }
+        .profile-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        .profile-container:hover .profile-card {
+            transform: rotateY(180deg);
+        }
+        .profile-card img, .profile-card .profile-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+        }
+        .profile-card img {
+            border: 5px solid #fff;
+        }
+        .profile-card .profile-back {
+            background: linear-gradient(135deg, #0066cc, #ff5733);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg);
+            text-align: center;
+            padding: 20px;
+            border-radius: 50%;
+            font-size: 1em;
+        }
+        .profile-card .profile-back i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .profile-card .profile-back p {
+            margin: 5px 0;
+        }
+
+        .about-content {
+            max-width: 500px;
+        }
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .about-content .typewriter {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.8;
+            margin: 0 auto;
+            border-right: 2px solid #333;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(40, end), blink 0.75s step-end infinite alternate;
+        }
+        .highlight {
+            color: #ff5733;
+            font-weight: bold;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink {
+            from {
+                border-color: transparent;
+            }
+            to {
+                border-color: #333;
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: #fff;
+            padding: 50px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .projects-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .projects-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .projects-section li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .projects-section li:hover {
+            background: #ececec;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f4f4f4;
+        }
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .contact-section button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .contact-section button:hover {
+            background: #0066cc;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Aarjav's Portfolio</h1>
+        <p>📍 Tech Enthusiast | Adventurer | B.Tech Student</p>
+    </header>
+
+    <!-- Profile and About Section -->
+    <div class="profile-about">
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="profile pic.jpeg" alt="Aarjav's Profile Picture">
+                <div class="profile-back">
+                    <i>🚀</i>
+                    <p>Innovator | Developer</p>
+                    <p>“Code, Build, Explore”</p>
+                </div>
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p class="typewriter">
+                Hi, I'm Aarjav, an <span class="highlight">intern</span> at TBI GEU,<br>
+                and a passionate <span class="highlight">open-source contributor at GSSOC</span>.<br>
+                I've also worked with the <span class="highlight">International Organization AIESEC</span>.<br>
+                I love exploring AI, blockchain, and web development!
+            </p>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Instagram Clone:</strong> Built a feature-rich social media clone.</li>
+            <li><strong>GSSOC Contributions:</strong> Made impactful open-source contributions during GirlScript Summer of Code.</li>
+            <li><strong>AI for Everyone:</strong> Explored foundational AI concepts through Andrew Ng's course.</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Contact</h2>
+        <button onclick="location.href='mailto:aarjavjain2210@gmail.com'">Email Me</button>
+        <button onclick="location.href='https://github.com/Aarjav-Jain-2210'">GitHub</button>
+        <button onclick="location.href='https://www.linkedin.com/in/aarjav-jain-'">LinkedIn</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Aarjav | Built with 💻 and ☕</p>
+    </footer>
+
+</body>
+</html>
+ans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
