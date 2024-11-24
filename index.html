@@ -12,7 +12,6 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            line-height: 1.6;
         }
         h1, h2 {
             margin: 0;
@@ -42,12 +41,19 @@
             margin-top: 10px;
         }
 
-        /* Profile Picture Flip Styles */
+        /* Profile and About Section */
+        .profile-about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px auto;
+            padding: 20px;
+        }
         .profile-container {
             perspective: 1000px;
-            margin: 20px auto;
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
         }
         .profile-card {
             position: relative;
@@ -77,27 +83,30 @@
             align-items: center;
             justify-content: center;
             transform: rotateY(180deg);
+            border-radius: 50%;
         }
 
-        /* About Section Styles */
         .about-content {
-            text-align: center;
-            margin: 50px auto;
-            padding: 0 20px;
+            max-width: 500px;
         }
         .about-content h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
+            text-align: left;
         }
-        .typewriter {
+        .about-content .typewriter {
             font-size: 1.2em;
             color: #666;
+            line-height: 1.8;
             margin: 0 auto;
-            max-width: 800px;
             border-right: 2px solid #333;
             white-space: nowrap;
             overflow: hidden;
-            animation: typing 4s steps(30, end), blink 0.75s step-end infinite alternate;
+            animation: typing 4s steps(40, end), blink 0.75s step-end infinite alternate;
+        }
+        .highlight {
+            color: #ff5733;
+            font-weight: bold;
         }
         @keyframes typing {
             from {
@@ -116,7 +125,7 @@
             }
         }
 
-        /* Projects Section Styles */
+        /* Projects Section */
         .projects-section {
             background: #fff;
             padding: 50px 20px;
@@ -145,7 +154,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* Footer Styles */
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f4f4f4;
+        }
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .contact-section button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .contact-section button:hover {
+            background: #0066cc;
+            color: #fff;
+        }
+
+        /* Footer */
         footer {
             background: #333;
             color: #fff;
@@ -157,29 +190,29 @@
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <h1>Aarjav's Portfolio</h1>
         <p>📍 Tech Enthusiast | Adventurer | B.Tech Student</p>
     </header>
 
-    <!-- Profile Picture Flip -->
-    <div class="profile-container">
-        <div class="profile-card">
-            <img src="profile pic.jpeg" alt="Aarjav's Profile Picture">
-            <div class="profile-back">
-                <p>Full Stack Developer</p>
+    <!-- Profile and About Section -->
+    <div class="profile-about">
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="profile pic.jpeg" alt="Aarjav's Profile Picture">
+                <div class="profile-back">
+                    <p>Full Stack Developer</p>
+                </div>
             </div>
         </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p class="typewriter">
+                Hi, I'm Aarjav, an <span class="highlight">intern</span> at TBI GEU and a passionate open-source contributor at GSSOC. I love exploring AI, blockchain, and web development!
+            </p>
+        </div>
     </div>
-
-    <!-- About Section -->
-    <section class="about-content">
-        <h2>About Me</h2>
-        <p class="typewriter">
-            Hi, I'm Aarjav, a passionate tech enthusiast and adventurer. I started my TBI GEU journey as a Full Stack Developer intern, contributed to open source during GSSOC, and love exploring AI, blockchain, and web development!
-        </p>
-    </section>
 
     <!-- Projects Section -->
     <section class="projects-section">
@@ -191,7 +224,15 @@
         </ul>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Contact</h2>
+        <button onclick="location.href='mailto:aarjavjain2210@gmail.com'">Email Me</button>
+        <button onclick="location.href='https://github.com/Aarjav-Jain-2210'">GitHub</button>
+        <button onclick="location.href='https://www.linkedin.com/in/aarjav-jain-'">LinkedIn</button>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Aarjav | Built with 💻 and ☕</p>
     </footer>
